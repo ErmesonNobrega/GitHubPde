@@ -1,3 +1,5 @@
+import './commands'
+
 describe('Testes do SauceDemo', () => {
     const baseUrl = 'https://www.saucedemo.com/';
     const username = 'standard_user';

@@ -1,4 +1,4 @@
-import './commands'
+import '../support/commands'
 
 describe('Testes do SauceDemo', () => {
     const baseUrl = 'https://www.saucedemo.com/';
@@ -6,8 +6,8 @@ describe('Testes do SauceDemo', () => {
     const password = 'secret_sauce';
   
     beforeEach(() => {
-      cy.visit(baseUrl);
-    });
+        cy.login("standard_user", "secret_sauce");
+      });
   
     // 🔹 1. Teste de login com credenciais válidas
     it('Deve fazer login com sucesso', () => {

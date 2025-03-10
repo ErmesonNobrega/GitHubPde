@@ -24,7 +24,8 @@ describe('Testes do SauceDemo', () => {
       cy.get('[data-test="login-button"]').click();
       cy.get('[data-test="error"]').should('contain', 'Username and password do not match');
     });
-  
+
+    
     // 🔹 3. Teste de logout
     it('Deve fazer logout com sucesso', () => {
       cy.login(username, password);

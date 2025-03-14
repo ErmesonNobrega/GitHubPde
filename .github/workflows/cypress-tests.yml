@@ -8,7 +8,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 12 * * *"  # Executa todos os dias às 12:00 UTC
+    - cron: "0 12 * * *"  # Roda todos os dias às 12:00 UTC
 
 jobs:
   cypress-run:
@@ -26,23 +26,14 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run Cypress tests (E2E)
+    - name: Run Cypress tests
       uses: cypress-io/github-action@v6
       with:
         record: false
         component: false
 
-    - name: Run Performance Tests
-      run: npx cypress run --spec "cypress/e2e/performance.cy.js"
-
-    - name: Merge Mochawesome reports
-      run: npx mochawesome-merge cypress/reports/*.json -o cypress/reports/merged-report.json
-
-    - name: Generate HTML Report
-      run: npx marge cypress/reports/merged-report.json -o cypress/reports
-
-    - name: Upload Test Report
+    - name: Upload Cypress Reports
       uses: actions/upload-artifact@v3
       with:
-        name: Cypress Test Report
-        path: cypress/reports
+        name: cypress-report
+        path: cypress/reports  # Caminho onde os relatórios são gerados

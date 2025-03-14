@@ -34,3 +34,15 @@ jobs:
 
     - name: Run Performance Tests
       run: npx cypress run --spec "cypress/e2e/performance.cy.js"
+
+    - name: Merge Mochawesome reports
+      run: npx mochawesome-merge cypress/reports/*.json -o cypress/reports/merged-report.json
+
+    - name: Generate HTML Report
+      run: npx marge cypress/reports/merged-report.json -o cypress/reports
+
+    - name: Upload Test Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: Cypress Test Report
+        path: cypress/reports

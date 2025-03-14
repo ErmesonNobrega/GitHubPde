@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: "0 12 * * *"  # Executa todos os dias às 12:00 UTC
 
 jobs:
   cypress-run:
@@ -24,8 +26,11 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run Cypress tests
+    - name: Run Cypress tests (E2E)
       uses: cypress-io/github-action@v6
       with:
-          record: false
-          component: false
+        record: false
+        component: false
+
+    - name: Run Performance Tests
+      run: npx cypress run --spec "cypress/e2e/performance.cy.js"

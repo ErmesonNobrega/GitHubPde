@@ -8,7 +8,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 12 * * *"  # Roda todos os dias às 12:00 UTC
+    - cron: "0 12 * * *"  # Executa todos os dias às 12:00 UTC
 
 jobs:
   cypress-run:
@@ -16,15 +16,18 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4  # Atualizado para a versão mais recente
+      uses: actions/checkout@v4
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4  # Atualizado para v4
+      uses: actions/setup-node@v4
       with:
         node-version: 18
 
     - name: Install dependencies
       run: npm install
+
+    - name: Install Mochawesome Reporter
+      run: npm install mochawesome mochawesome-merge mochawesome-report-generator --save-dev
 
     - name: Run Cypress tests
       uses: cypress-io/github-action@v6
@@ -32,8 +35,8 @@ jobs:
         record: false
         component: false
 
-    - name: Upload Cypress Reports
-      uses: actions/upload-artifact@v4  # Atualizado para v4
+    - name: Upload Mochawesome Report
+      uses: actions/upload-artifact@v4
       with:
         name: cypress-report
-        path: cypress/reports  # Certifique-se de que os relatórios estão sendo salvos aqui
+        path: cypress/reports

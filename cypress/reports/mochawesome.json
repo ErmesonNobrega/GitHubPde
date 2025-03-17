@@ -1,0 +1,198 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 1,
+    "pending": 0,
+    "failures": 4,
+    "start": "2025-03-14T21:34:28.463Z",
+    "end": "2025-03-14T21:34:56.455Z",
+    "duration": 27992,
+    "testsRegistered": 5,
+    "passPercent": 20,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "325ef1dc-a42d-48c1-b8ad-ea0a1f547b30",
+      "title": "",
+      "fullFile": "cypress\\e2e\\performance.cy.js",
+      "file": "cypress\\e2e\\performance.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fa3d70ac-2663-4c62-b308-8384e37e1dfc",
+          "title": "Testes de Performance - SauceDemo",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "🔹 Login deve ser rápido (abaixo de 2s)",
+              "fullTitle": "Testes de Performance - SauceDemo 🔹 Login deve ser rápido (abaixo de 2s)",
+              "timedOut": null,
+              "duration": 7705,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", \"**/login\").as(\"loginRequest\");\ncy.get('[data-test=\"username\"]').type(\"standard_user\");\ncy.get('[data-test=\"password\"]').type(\"secret_sauce\");\ncy.get('[data-test=\"login-button\"]').click();\ncy.wait(\"@loginRequest\").its(\"response.duration\").should(\"be.lessThan\", 2000);",
+              "err": {
+                "message": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `loginRequest`. No request ever occurred.\n\nhttps://on.cypress.io/wait",
+                "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `loginRequest`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:75129:18)\n    at Object.errByPath (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:75183:10)\n    at checkForXhr (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:135066:84)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:135092:28)\n    at tryCatcher (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:143474:68)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:143415:14)\n    at tryCatcher (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:5420:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/performance.cy.js:17:9)",
+                "diff": null
+              },
+              "uuid": "348226bb-c9dc-431b-894f-06c716cc9319",
+              "parentUUID": "fa3d70ac-2663-4c62-b308-8384e37e1dfc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "🔹 Carregamento da Página Inicial deve ser rápido",
+              "fullTitle": "Testes de Performance - SauceDemo 🔹 Carregamento da Página Inicial deve ser rápido",
+              "timedOut": null,
+              "duration": 538,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(baseUrl);\ncy.window().its(\"performance.timing.loadEventEnd\").should(\"be.greaterThan\", 0);",
+              "err": {},
+              "uuid": "ace57bfe-c0a9-49a4-adc7-d823c175062a",
+              "parentUUID": "fa3d70ac-2663-4c62-b308-8384e37e1dfc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "🔹 Tempo de resposta da API de produtos deve ser menor que 2s",
+              "fullTitle": "Testes de Performance - SauceDemo 🔹 Tempo de resposta da API de produtos deve ser menor que 2s",
+              "timedOut": null,
+              "duration": 5291,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"GET\", \"**/inventory.json\").as(\"inventoryRequest\");\ncy.visit(baseUrl);\ncy.wait(\"@inventoryRequest\").its(\"response.duration\").should(\"be.lessThan\", 2000);",
+              "err": {
+                "message": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `inventoryRequest`. No request ever occurred.\n\nhttps://on.cypress.io/wait",
+                "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `inventoryRequest`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:75129:18)\n    at Object.errByPath (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:75183:10)\n    at checkForXhr (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:135066:84)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:135092:28)\n    at tryCatcher (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:143474:68)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:143415:14)\n    at tryCatcher (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:5420:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/performance.cy.js:29:9)",
+                "diff": null
+              },
+              "uuid": "467e2774-3813-478d-897e-a44ccb074cba",
+              "parentUUID": "fa3d70ac-2663-4c62-b308-8384e37e1dfc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "🔹 Adicionar um produto ao carrinho deve ser rápido (abaixo de 1.5s)",
+              "fullTitle": "Testes de Performance - SauceDemo 🔹 Adicionar um produto ao carrinho deve ser rápido (abaixo de 1.5s)",
+              "timedOut": null,
+              "duration": 5997,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", \"**/cart\").as(\"addToCart\");\ncy.get('[data-test=\"username\"]').type(\"standard_user\");\ncy.get('[data-test=\"password\"]').type(\"secret_sauce\");\ncy.get('[data-test=\"login-button\"]').click();\ncy.get(\".inventory_item\").first().find(\"button\").click();\ncy.wait(\"@addToCart\").its(\"response.duration\").should(\"be.lessThan\", 1500);",
+              "err": {
+                "message": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `addToCart`. No request ever occurred.\n\nhttps://on.cypress.io/wait",
+                "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `addToCart`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:75129:18)\n    at Object.errByPath (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:75183:10)\n    at checkForXhr (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:135066:84)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:135092:28)\n    at tryCatcher (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:143474:68)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:143415:14)\n    at tryCatcher (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:5420:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/performance.cy.js:40:9)",
+                "diff": null
+              },
+              "uuid": "b5aed317-f329-4eb2-a0f2-3d20e24d53d9",
+              "parentUUID": "fa3d70ac-2663-4c62-b308-8384e37e1dfc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "🔹 Tempo de logout deve ser menor que 1.5s",
+              "fullTitle": "Testes de Performance - SauceDemo 🔹 Tempo de logout deve ser menor que 1.5s",
+              "timedOut": null,
+              "duration": 8244,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"POST\", \"**/logout\").as(\"logoutRequest\");\ncy.get('[data-test=\"username\"]').type(\"standard_user\");\ncy.get('[data-test=\"password\"]').type(\"secret_sauce\");\ncy.get('[data-test=\"login-button\"]').click();\ncy.get(\"#react-burger-menu-btn\").click();\ncy.get(\"#logout_sidebar_link\").click();\ncy.wait(\"@logoutRequest\").its(\"response.duration\").should(\"be.lessThan\", 1500);",
+              "err": {
+                "message": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `logoutRequest`. No request ever occurred.\n\nhttps://on.cypress.io/wait",
+                "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `logoutRequest`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:75129:18)\n    at Object.errByPath (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:75183:10)\n    at checkForXhr (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:135066:84)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:135092:28)\n    at tryCatcher (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:143474:68)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:143415:14)\n    at tryCatcher (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://www.saucedemo.com/__cypress/runner/cypress_runner.js:5420:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/performance.cy.js:53:9)",
+                "diff": null
+              },
+              "uuid": "eb2a79dd-9f47-480d-95e1-c3c4131289e0",
+              "parentUUID": "fa3d70ac-2663-4c62-b308-8384e37e1dfc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ace57bfe-c0a9-49a4-adc7-d823c175062a"
+          ],
+          "failures": [
+            "348226bb-c9dc-431b-894f-06c716cc9319",
+            "467e2774-3813-478d-897e-a44ccb074cba",
+            "b5aed317-f329-4eb2-a0f2-3d20e24d53d9",
+            "eb2a79dd-9f47-480d-95e1-c3c4131289e0"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 27775,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

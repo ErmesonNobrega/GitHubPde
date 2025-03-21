@@ -7,8 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron: "0 12 * * *"  # Executa todos os dias às 12:00 UTC
 
 jobs:
   cypress-run:
